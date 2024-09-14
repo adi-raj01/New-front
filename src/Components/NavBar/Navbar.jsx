@@ -40,7 +40,9 @@ e.target.classList.toggle('open')
         </li>
       </ul>
       <div className="nav-login-cart">
-        <Link to='/login'><button>Login</button></Link>
+        {localStorage.getItem('auth-token')?
+        <button onClick={()=>{localStorage.removeItem('auth-token');window.location.replace('/')}}>LogOut</button>:<Link to='/login'><button>Login</button></Link>}
+        
         <Link to='/cart'>
           <img src={Cart_icon} alt="Cart Icon" />
         </Link>

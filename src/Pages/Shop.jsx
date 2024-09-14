@@ -12,8 +12,9 @@ function Shop() {
     <div>
       <Hero/>
       <br/><br/><br/><br/><br/>
+    
       <Popular/>
-      <br/><br/><br/><br/><br/> <br/><br/>
+    <br/><br/><br/><br/><br/><br/><br/>
       <Offers/>
       <NewCollection/>
       <NewsLetter/>

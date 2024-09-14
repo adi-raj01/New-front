@@ -1,20 +1,24 @@
-import React, { createContext, useState } from "react";
-import all_product from '../Components/Assests/Frontend_Assets/all_product'; // Ensure this path is correct
+import React, { createContext, useEffect, useState } from "react";
 
 export const ShopContext = createContext(null);
 
 // Initialize the cart with product IDs as keys
 const getDefaultCart = () => {
     let cart = {};
-    for (const product of all_product) {
-        cart[product.id] = 0; // Use product.id instead of index
+    for (let index=0; index<300+1;index++) {
+        cart[index] = 0; // Use product.id instead of index
     }
     return cart;
 }
 
 const ShopContextProvider = ({ children }) => {
+    const[all_product,setAll_Product]=useState([]);
     const [cartItems, setCartItems] = useState(getDefaultCart());
-
+useEffect(()=>{
+ fetch('http://localhost:3000/allproducts')
+ .then((response)=>response.json( ))
+ .then((data)=>setAll_Product(data))
+},[])
     const addToCart = (itemId) => {
         setCartItems((prev) => ({
             ...prev,
